@@ -13,6 +13,7 @@
     {"id":{"name":"track1","path":"sounds/track1/track1.yy",},"order":0,},
     {"id":{"name":"instance_nth_nearest","path":"scripts/instance_nth_nearest/instance_nth_nearest.yy",},"order":1,},
     {"id":{"name":"obj_Board","path":"objects/obj_Board/obj_Board.yy",},"order":1,},
+    {"id":{"name":"fnt_CenturyGothic18","path":"fonts/fnt_CenturyGothic18/fnt_CenturyGothic18.yy",},"order":0,},
     {"id":{"name":"obj_Input","path":"objects/obj_Input/obj_Input.yy",},"order":3,},
     {"id":{"name":"obj_oldButton","path":"objects/obj_oldButton/obj_oldButton.yy",},"order":1,},
     {"id":{"name":"Instantiators","path":"scripts/Instantiators/Instantiators.yy",},"order":0,},

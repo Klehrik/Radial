@@ -8,6 +8,15 @@ if (running)
 {
 	seconds += delta_time/1000000;
 	beat = seconds/60 * bpm;
+	
+	// End track
+	if (seconds > secondsMax + 3)
+	{
+		var current = trackList[trackSelected];
+		if (points > current.highscore) current.highscore = points;
+		running = false;
+		audio_stop_all();
+	}
 }
 
 
@@ -100,7 +109,7 @@ while (true)
 	
 	// Process next note
 	var nextNote = trackData[| 0];
-	if (beat >= nextNote[1] - noteBeatTime)
+	if (beat >= nextNote[1] - noteBeatTime - 1)		// composer insisted on starting on beat 1
 	{
 		board.create_note(nextNote[0]);
 		ds_list_delete(trackData, 0);
@@ -110,11 +119,17 @@ while (true)
 #endregion
 
 
+// Change tracks
+if (keyboard_check_pressed(vk_left)) trackSelected -= 1;
+if (keyboard_check_pressed(vk_right)) trackSelected += 1;
+trackSelected = clamp(trackSelected, 0, array_length(trackList) - 1);
 
-
-// debug
+// Start current track
 if (keyboard_check_pressed(vk_space))
 {
+	//running = true;
+	
+	// debug
 	if (debug_file == noone)
 	{
 		debug_file = get_open_filename(".txt", "track1.txt");
@@ -125,3 +140,20 @@ if (keyboard_check_pressed(vk_space))
 		debug_file = noone;
 	}
 }
+
+
+
+
+// debug
+//if (keyboard_check_pressed(ord("1")))
+//{
+//	if (debug_file == noone)
+//	{
+//		debug_file = get_open_filename(".txt", "track1.txt");
+//	}
+//	else
+//	{
+//		load_track_dev(debug_file);
+//		debug_file = noone;
+//	}
+//}

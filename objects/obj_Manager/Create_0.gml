@@ -34,11 +34,23 @@ trackLength = 0;	// in seconds
 
 bpm = 100;
 seconds = 0;
+secondsMax = 0;
 beat = 0;
 
 trackData = ds_list_create();	// Note format: [direction (0-3), beat (can have decimal values)]
 
-running = false;
+running = false;	// if there is a track running or not
+
+
+// Highscores and stuff
+trackSelected = 0;
+trackList = [
+	{
+		name:		"Sick Beat",
+		index:		"track1",
+		highscore:	0,
+	},
+]
 
 
 // Functions
@@ -111,6 +123,8 @@ set_point_multiplier = function()
 	
 //	var asset = asset_get_index(trackIndex);
 //	audio_play_sound(asset, 0, false);
+//  secondsMax = audio_sound_length(asset);
+//  running = true;
 //}
 
 debug_file = noone;
@@ -168,5 +182,6 @@ load_track_dev = function(path)
 	
 	var asset = track1;
 	audio_play_sound(asset, 0, false);
+	secondsMax = audio_sound_length(asset);
 	running = true;
 }
