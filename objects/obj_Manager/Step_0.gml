@@ -136,7 +136,7 @@ if (keyboard_check_pressed(vk_right)) trackSelected += 1;
 trackSelected = clamp(trackSelected, 0, array_length(trackList) - 1);
 
 // Start current track
-if (keyboard_check_pressed(vk_space))
+if (keyboard_check_pressed(vk_space) and !running)
 {
 	load_track(trackList[trackSelected].index);
 	

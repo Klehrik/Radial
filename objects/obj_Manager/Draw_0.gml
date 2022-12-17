@@ -33,7 +33,16 @@ if (!running)
 	}
 	
 	
+	// Title
+	draw_set_font(fnt_CenturyGothic48);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	draw_text(room_center_x, room_center_y, "Radial");
+	draw_set_valign(fa_top);
+	
+	
 	// Credits
+	draw_set_font(fnt_CenturyGothic18);
 	draw_set_halign(fa_right);
 	draw_text(room_width - 20, room_height - 70, "Klehrik");
 	draw_text(room_width - 20, room_height - 40, "aideo88");

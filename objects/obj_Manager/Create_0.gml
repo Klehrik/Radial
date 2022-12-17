@@ -55,7 +55,7 @@ trackList = [
 		index:		"track2",
 		highscore:	0,
 	},
-]
+];
 
 
 // Functions
