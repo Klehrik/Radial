@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "track1",
+  "name": "track2",
   "conversionMode": 0,
   "compression": 3,
   "volume": 1.0,
@@ -14,8 +14,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "track1.mp3",
-  "duration": 105.03833,
+  "soundFile": "track2.mp3",
+  "duration": 128.20895,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

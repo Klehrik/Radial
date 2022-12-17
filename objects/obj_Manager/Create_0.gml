@@ -46,8 +46,13 @@ running = false;	// if there is a track running or not
 trackSelected = 0;
 trackList = [
 	{
-		name:		"Sick Beat",
+		name:		"g",
 		index:		"track1",
+		highscore:	0,
+	},
+	{
+		name:		"Sick Beat",
+		index:		"track2",
 		highscore:	0,
 	},
 ]
@@ -70,71 +75,12 @@ set_point_multiplier = function()
 	}
 }
 
-//load_track = function(trackIndex)
-//{
-//	ds_list_clear(trackData);
-	
-//	var file = file_text_open_read(trackIndex + ".txt");
-	
-//	bpm = file_text_read_real(file);
-//	file_text_readln(file);
-	
-//	while (!file_text_eof(file))
-//	{	
-//		// Read data on current line
-//		var line = file_text_readln(file);
-//		line = string_split(line, " ");
-		
-//		var dir = line[0];
-//		var _beat = line[1];
-		
-//		// Direction string to number (0-3)
-//		var dirNum = 0;
-//		switch (dir)
-//		{
-//			case "u":
-//			case "up":
-//				dirNum = 1;
-//				break;
-				
-//			case "l":
-//			case "left":
-//				dirNum = 2;
-//				break;
-				
-//			case "d":
-//			case "down":
-//				dirNum = 3;
-//				break;
-//		}
-		
-//		// Add note data to list
-//	    ds_list_add(trackData, [dirNum, _beat]);
-//	}
-	
-//	file_text_close(file);
-	
-//	// Reset variables and play track
-//	seconds = 0;
-//	beat = 0;
-//	points = 0;
-//	instance_destroy(obj_Note);
-//	audio_stop_all();
-	
-//	var asset = asset_get_index(trackIndex);
-//	audio_play_sound(asset, 0, false);
-//  secondsMax = audio_sound_length(asset);
-//  running = true;
-//}
-
-debug_file = noone;
-
-load_track_dev = function(path)
+load_track = function(trackIndex)
 {
 	ds_list_clear(trackData);
 	
-	var file = file_text_open_read(path);
-		
+	var file = file_text_open_read(trackIndex + ".txt");
+	
 	bpm = file_text_read_real(file);
 	file_text_readln(file);
 	
@@ -168,7 +114,7 @@ load_track_dev = function(path)
 		}
 		
 		// Add note data to list
-		ds_list_add(trackData, [dirNum, _beat]);
+	    ds_list_add(trackData, [dirNum, _beat]);
 	}
 	
 	file_text_close(file);
@@ -177,11 +123,75 @@ load_track_dev = function(path)
 	seconds = 0;
 	beat = 0;
 	points = 0;
+	pointMultiplier = 1;
+	combo = 0;
+	
 	instance_destroy(obj_Note);
 	audio_stop_all();
 	
-	var asset = track1;
+	var asset = asset_get_index(trackIndex);
 	audio_play_sound(asset, 0, false);
 	secondsMax = audio_sound_length(asset);
 	running = true;
 }
+
+//debug_file = noone;
+
+//load_track_dev = function(path)
+//{
+//	ds_list_clear(trackData);
+	
+//	var file = file_text_open_read(path);
+		
+//	bpm = file_text_read_real(file);
+//	file_text_readln(file);
+	
+//	while (!file_text_eof(file))
+//	{	
+//		// Read data on current line
+//		var line = file_text_readln(file);
+//		line = string_split(line, " ");
+		
+//		var dir = line[0];
+//		var _beat = line[1];
+		
+//		// Direction string to number (0-3)
+//		var dirNum = 0;
+//		switch (dir)
+//		{
+//			case "u":
+//			case "up":
+//				dirNum = 1;
+//				break;
+				
+//			case "l":
+//			case "left":
+//				dirNum = 2;
+//				break;
+				
+//			case "d":
+//			case "down":
+//				dirNum = 3;
+//				break;
+//		}
+		
+//		// Add note data to list
+//		ds_list_add(trackData, [dirNum, _beat]);
+//	}
+	
+//	file_text_close(file);
+	
+//	// Reset variables and play track
+//	seconds = 0;
+//	beat = 0;
+//	points = 0;
+//	pointMultiplier = 1;
+//	combo = 0;
+//	instance_destroy(obj_Note);
+//	audio_stop_all();
+	
+//	var asset = track1;
+//	audio_play_sound(asset, 0, false);
+//	secondsMax = audio_sound_length(asset);
+//	running = true;
+//}
